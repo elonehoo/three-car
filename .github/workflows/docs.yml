@@ -31,8 +31,8 @@ jobs:
       - name: Build site
         run: npm run build
 
-      # - name: echo CNAME
-      # - run: echo 'avatar.elonehoo.xyz' > dist/CNAME
+      - name: echo CNAME
+      - run: echo 'car.elonehoo.xyz' > dist/CNAME
 
       # please check out the docs of the workflow for more details
       # @see https://github.com/crazy-max/ghaction-github-pages
