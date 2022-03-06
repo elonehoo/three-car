@@ -25,6 +25,7 @@ jobs:
       # install dependencies if the cache did not hit
       - name: Install Parcel-Bundler
         run: npm install -g parcel-bundler
+
       - name: Install Dependencies
         run: npm i
       # run build script
