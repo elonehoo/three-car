@@ -1,7 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
-import { TweenLite } from 'gsap/TweenLite'
-import { Power1 } from 'gsap/EasePack'
+import { TweenLite, Power1 } from 'gsap'
 
 export default class Camera
 {
@@ -183,7 +182,7 @@ export default class Camera
         this.pan.mouse = new THREE.Vector2()
         this.pan.needsUpdate = false
         this.pan.hitMesh = new THREE.Mesh(
-            new THREE.PlaneBufferGeometry(500, 500, 1, 1),
+            new THREE.PlaneGeometry(500, 500, 1, 1),
             new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true, visible: false })
         )
         this.container.add(this.pan.hitMesh)

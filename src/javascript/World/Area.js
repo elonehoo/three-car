@@ -1,6 +1,5 @@
 import * as THREE from 'three'
-import { TweenLite } from 'gsap/TweenLite'
-import { Back } from 'gsap/EasePack'
+import { TweenLite, Back } from 'gsap'
 
 import EventEmitter from '../Utils/EventEmitter.js'
 import AreaFloorBorderBufferGeometry from '../Geometries/AreaFloorBorderBufferGeometry.js'
@@ -125,7 +124,7 @@ export default class Area extends EventEmitter
         // Enter
         this.key.enter = {}
         this.key.enter.size = 1.4
-        this.key.enter.geometry = new THREE.PlaneBufferGeometry(this.key.enter.size, this.key.enter.size / 4, 1, 1)
+        this.key.enter.geometry = new THREE.PlaneGeometry(this.key.enter.size, this.key.enter.size / 4, 1, 1)
 
         this.key.enter.texture = this.resources.items.areaEnterTexture
         this.key.enter.texture.magFilter = THREE.NearestFilter
@@ -143,7 +142,7 @@ export default class Area extends EventEmitter
         // Icon
         this.key.icon = {}
         this.key.icon.size = 0.75
-        this.key.icon.geometry = new THREE.PlaneBufferGeometry(this.key.icon.size, this.key.icon.size, 1, 1)
+        this.key.icon.geometry = new THREE.PlaneGeometry(this.key.icon.size, this.key.icon.size, 1, 1)
 
         this.key.icon.texture = this.resources.items.areaKeyEnterTexture
         this.key.icon.texture.magFilter = THREE.NearestFilter
@@ -270,7 +269,7 @@ export default class Area extends EventEmitter
     setInteractions()
     {
         this.mouseMesh = new THREE.Mesh(
-            new THREE.PlaneBufferGeometry(this.halfExtents.x * 2, this.halfExtents.y * 2, 1, 1),
+            new THREE.PlaneGeometry(this.halfExtents.x * 2, this.halfExtents.y * 2, 1, 1),
             new THREE.MeshBasicMaterial({ transparent: true, opacity: 0 })
         )
         this.mouseMesh.position.z = - 0.01

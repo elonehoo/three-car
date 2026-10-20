@@ -275,12 +275,12 @@ export default class Physics
 
             this.car.model.material = new THREE.MeshBasicMaterial({ color: 0xffffff, wireframe: true })
 
-            this.car.model.chassis = new THREE.Mesh(new THREE.BoxBufferGeometry(this.car.options.chassisDepth, this.car.options.chassisWidth, this.car.options.chassisHeight), this.car.model.material)
+            this.car.model.chassis = new THREE.Mesh(new THREE.BoxGeometry(this.car.options.chassisDepth, this.car.options.chassisWidth, this.car.options.chassisHeight), this.car.model.material)
             this.car.model.container.add(this.car.model.chassis)
 
             this.car.model.wheels = []
 
-            const wheelGeometry = new THREE.CylinderBufferGeometry(this.car.options.wheelRadius, this.car.options.wheelRadius, this.car.options.wheelHeight, 8, 1)
+            const wheelGeometry = new THREE.CylinderGeometry(this.car.options.wheelRadius, this.car.options.wheelRadius, this.car.options.wheelHeight, 8, 1)
 
             for(let i = 0; i < 4; i++)
             {
@@ -740,16 +740,16 @@ export default class Physics
                 let modelGeometry = null
                 if(shape === 'cylinder')
                 {
-                    modelGeometry = new THREE.CylinderBufferGeometry(1, 1, 1, 8, 1)
+                    modelGeometry = new THREE.CylinderGeometry(1, 1, 1, 8, 1)
                     modelGeometry.rotateX(Math.PI * 0.5)
                 }
                 else if(shape === 'box')
                 {
-                    modelGeometry = new THREE.BoxBufferGeometry(1, 1, 1)
+                    modelGeometry = new THREE.BoxGeometry(1, 1, 1)
                 }
                 else if(shape === 'sphere')
                 {
-                    modelGeometry = new THREE.SphereBufferGeometry(1, 8, 8)
+                    modelGeometry = new THREE.SphereGeometry(1, 8, 8)
                 }
 
                 const modelMesh = new THREE.Mesh(modelGeometry, this.models.materials[_options.mass === 0 ? 'static' : 'dynamic'])
