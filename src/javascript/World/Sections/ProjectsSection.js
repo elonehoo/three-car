@@ -1,6 +1,6 @@
 import * as THREE from 'three'
 import Project from './Project'
-import TweenLite from 'gsap/TweenLite'
+import { TweenLite } from 'gsap'
 
 import projectsThreejsJourneySlideASources from '../../../models/projects/threejsJourney/slideA.jpg'
 import projectsThreejsJourneySlideBSources from '../../../models/projects/threejsJourney/slideB.jpg'
@@ -86,7 +86,7 @@ export default class ProjectsSection
     setGeometries()
     {
         this.geometries = {}
-        this.geometries.floor = new THREE.PlaneBufferGeometry(16, 8)
+        this.geometries.floor = new THREE.PlaneGeometry(16, 8)
     }
 
     setMeshes()
@@ -97,7 +97,7 @@ export default class ProjectsSection
         this.resources.items.areaOpenTexture.magFilter = THREE.NearestFilter
         this.resources.items.areaOpenTexture.minFilter = THREE.LinearFilter
         this.meshes.boardPlane = this.resources.items.projectsBoardPlane.scene.children[0]
-        this.meshes.areaLabel = new THREE.Mesh(new THREE.PlaneBufferGeometry(2, 0.5), new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, color: 0xffffff, alphaMap: this.resources.items.areaOpenTexture }))
+        this.meshes.areaLabel = new THREE.Mesh(new THREE.PlaneGeometry(2, 0.5), new THREE.MeshBasicMaterial({ transparent: true, depthWrite: false, color: 0xffffff, alphaMap: this.resources.items.areaOpenTexture }))
         this.meshes.areaLabel.matrixAutoUpdate = false
     }
 

@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { BufferGeometryUtils } from 'three/examples/jsm/utils/BufferGeometryUtils.js'
+import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js'
 
 export default class Objects
 {
@@ -95,7 +95,7 @@ export default class Objects
                 apply: (_mesh, _options) =>
                 {
                     // Create floor manually because of missing UV
-                    const geometry = new THREE.PlaneBufferGeometry(_mesh.scale.x, _mesh.scale.y, 10, 10)
+                    const geometry = new THREE.PlaneGeometry(_mesh.scale.x, _mesh.scale.y, 10, 10)
                     const material = this.materials.items.floorShadow.clone()
 
                     material.uniforms.tShadow.value = _options.floorShadowTexture
@@ -162,7 +162,7 @@ export default class Objects
             // Apply the object transform to the geometry and save it for later merge
             const geometry = _mesh.geometry
             _mesh.updateMatrixWorld() // Maybe not
-            geometry.applyMatrix(_mesh.matrixWorld)
+            geometry.applyMatrix4(_mesh.matrixWorld)
 
             mergeItem.geometriesToMerge.push(geometry)
         }
@@ -173,7 +173,7 @@ export default class Objects
             {
                 const mergeItem = this.merge.items[_mergeItemName]
 
-                mergeItem.geometry = BufferGeometryUtils.mergeBufferGeometries(mergeItem.geometriesToMerge) // Should add original geometry
+                mergeItem.geometry = mergeGeometries(mergeItem.geometriesToMerge) // Should add original geometry
                 mergeItem.mesh.geometry = mergeItem.geometry
             }
         }

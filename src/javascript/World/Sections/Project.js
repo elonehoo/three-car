@@ -1,8 +1,7 @@
 import * as THREE from 'three'
 
 import ProjectBoardMaterial from '../../Materials/ProjectBoard.js'
-import TweenLite from 'gsap/TweenLite'
-import { Power4 } from 'gsap/EasePack'
+import { TweenLite, Power4 } from 'gsap'
 
 export default class Project
 {
