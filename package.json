@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/brunosimon/three.js-template#readme",
   "devDependencies": {
-    "@babel/core": "^7.7.7",
-    "@babel/preset-env": "^7.7.7",
+    "@babel/core": "^8.0.7",
+    "@babel/preset-env": "^8.0.7",
     "babel-loader": "^8.0.6",
     "cannon": "^0.6.2",
     "clean-webpack-plugin": "^4.0.0",
