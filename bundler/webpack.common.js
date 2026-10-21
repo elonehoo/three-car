@@ -25,7 +25,20 @@ module.exports = {
             // HTML
             {
                 test: /\.(html)$/,
-                use: ['html-loader']
+                use:
+                [
+                    {
+                        loader: 'html-loader',
+                        options:
+                        {
+                            sources:
+                            {
+                                // Root-absolute URLs are copied from static/ at the site root.
+                                urlFilter: (attribute, value) => !value.startsWith('/')
+                            }
+                        }
+                    }
+                ]
             },
 
             // JS
